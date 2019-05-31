@@ -62,7 +62,9 @@
         },
         methods: {
             createFriend () {
-                const url = `${process.env.BASE_URL}/friends/`
+                var token = localStorage.getItem('access_token')
+                const url = `${process.env.BASE_URL}/api/friend/`
+                axios.defaults.headers.common['Authorization'] = 'JWT ' + token
                 axios.post(url, this.form).then((response) => {
                     // location.href = "/friends"
                     // router.push({ name: 'ListFriends', params: { userId: 123 }})

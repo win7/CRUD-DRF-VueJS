@@ -64,7 +64,9 @@
         },
         methods: {
             getFriend () {
-                const url = `${process.env.BASE_URL}/friend/${this.id}/`
+                var token = localStorage.getItem('access_token')
+                const url = `${process.env.BASE_URL}/api/friend/${this.id}/`
+                axios.defaults.headers.common['Authorization'] = 'JWT ' + token
                 axios.get(url).then((response) => {
                     this.form = response.data
                 })
@@ -73,9 +75,9 @@
                 })
             },
             updateFriend () {
-                // event.preventDefault()
-                console.log(this.form)
-                const url = `${process.env.BASE_URL}/friend/${this.id}/`
+                var token = localStorage.getItem('access_token')
+                const url = `${process.env.BASE_URL}/api/friend/${this.id}/`
+                axios.defaults.headers.common['Authorization'] = 'JWT ' + token
                 axios.put(url, this.form).then((response) => {
                     console.log(response.status)
                     // this.form = response.data

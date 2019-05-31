@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +33,12 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:8080'
 ]
 
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,7 +52,7 @@ INSTALLED_APPS = [
     'Contact',
     'rest_framework',
     'rest_framework_swagger',
-    'corsheaders',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [

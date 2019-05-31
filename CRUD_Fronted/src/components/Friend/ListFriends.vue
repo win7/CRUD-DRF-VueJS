@@ -68,6 +68,7 @@
 </template>
 
 <script>
+    // import {getAccessToken} from '../../../utils/auth'
     import axios from "axios"
 
     export default {
@@ -87,7 +88,10 @@
         },
         methods: {
             getFriends () {
-                const url = `${process.env.BASE_URL}/friends/`
+                var token = localStorage.getItem('access_token')
+                console.log(token)
+                const url = `${process.env.BASE_URL}/api/friend/`
+                axios.defaults.headers.common['Authorization'] = 'JWT ' + token
                 axios.get(url).then((response) => {
                     this.friends = response.data
                 })

@@ -16,13 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+
 from rest_framework.documentation import include_docs_urls
 from rest_framework_swagger.views import get_swagger_view
 schema_view = get_swagger_view(title='Friend API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^api/', include('Contact.urls')),
+    
+    path('auth/obtain_token/', obtain_jwt_token),
+    path('auth/refresh_token/', refresh_jwt_token),
+
+    re_path('api/', include('Contact.urls')),
     path(r'docs/', include_docs_urls(title='Friend API')),
     path(r'swagger-docs/', schema_view),
 ]

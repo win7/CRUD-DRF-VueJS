@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
 import Home from '@/components/Home'
+import Login from '@/components/Login'
 import ListFriends from '@/components/Friend/ListFriends/'
 import UpdateFriend from '@/components/Friend/UpdateFriend/'
 import DeleteFriend from '@/components/Friend/DeleteFriend/'
@@ -11,15 +12,15 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
-		{
-			path: '/hello',
-			name: 'HelloWorld',
-			component: HelloWorld
-		},
         {
             path: '/',
             name: 'Home',
             component: Home
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: Login
         },
         {
             path: '/list_friends/:status',

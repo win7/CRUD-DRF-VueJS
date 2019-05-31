@@ -20,7 +20,10 @@
         },
         methods: {
             deleteFriend () {
-                const url = `${process.env.BASE_URL}/friend/${this.id}/`
+                var token = localStorage.getItem('access_token')
+                const url = `${process.env.BASE_URL}/api/friend/${this.id}/`
+                axios.defaults.headers.common['Authorization'] = 'JWT ' + token
+                
                 var op = window.confirm('Estas seguro?') 
                 if (op) {
                     axios.delete(url).then((response) => {
