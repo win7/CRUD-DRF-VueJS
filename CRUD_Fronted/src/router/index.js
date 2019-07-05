@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import NotFound from '@/components/NotFound'
 import ListFriends from '@/components/Friend/ListFriends/'
 import UpdateFriend from '@/components/Friend/UpdateFriend/'
 import DeleteFriend from '@/components/Friend/DeleteFriend/'
@@ -21,6 +22,11 @@ export default new Router({
             path: '/login',
             name: 'Login',
             component: Login
+        },
+        {
+            path: '*',
+            name: 'NotFound',
+            component: NotFound
         },
         {
             path: '/list_friends/:status',
